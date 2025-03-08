@@ -48,10 +48,16 @@ def main():
     while True:
       input_image = input(f'Enter image name. Available options are:\n{image_options}\n> ')
 
+      default_prompt = "You are an expert radiographer. Describe accurately what you see in this image"
+      user_prompt = input(f'Enter your prompt or press enter to use default prompt: (default: {default_prompt})')
+      instruction = user_prompt if user_prompt else default_prompt
+
       image_path = f'images/{input_image}.jpg'
-      instruction = 'You are an expert radiographer. Describe accurately what you see in this image.'
 
       image = Image.open(image_path).convert("RGB")
+
+      print(f'using image: {image_path}')
+      print(f'using prompt: {instruction}')
 
       print('generating description...')
 
