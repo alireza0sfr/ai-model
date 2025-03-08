@@ -46,7 +46,7 @@ images = os.listdir('images')
 image_options = '\n'.join(images)
 input_image = input(f'Enter image name. Available options are:\n{image_options}\n> ')
 
-image_path = f'/images/{input_image}'
+image_path = f'images/{input_image}'
 instruction = 'You are an expert radiographer. Describe accurately what you see in this image.'
 
 image = Image.open(image_path).convert("RGB")
