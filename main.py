@@ -40,15 +40,25 @@ def predict_radiology_description(image, instruction):
     except Exception as e:
         return f"Error: {str(e)}"
 
-# Example of usage!
-images = os.listdir('images')
-# Fix the f-string syntax error by removing the nested f-string with escape character
-image_options = '\n'.join(images)
-input_image = input(f'Enter image name. Available options are:\n{image_options}\n> ')
 
-image_path = f'images/{input_image}'
-instruction = 'You are an expert radiographer. Describe accurately what you see in this image.'
+def main():
+    images = os.listdir('images')
+    image_options = '\n'.join([f'{image.split(".")[0]}' for image in images])
 
-image = Image.open(image_path).convert("RGB")
-output = predict_radiology_description(image, instruction)
-print(output)
+    while True:
+      input_image = input(f'Enter image name. Available options are:\n{image_options}\n> ')
+
+      image_path = f'images/{input_image}.jpg'
+      instruction = 'You are an expert radiographer. Describe accurately what you see in this image.'
+
+      image = Image.open(image_path).convert("RGB")
+
+      print('generating description...')
+
+      output = predict_radiology_description(image, instruction)
+      print(output)
+      print('\n--------------------------------\n')
+
+
+if __name__ == "__main__":
+    main()
