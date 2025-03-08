@@ -41,7 +41,7 @@ def predict_radiology_description(image, instruction):
         return f"Error: {str(e)}"
 
 # Example of usage!
-image_path = 'example_image.jpeg'
+image_path = 'example_image.jpg'
 instruction = 'You are an expert radiographer. Describe accurately what you see in this image.'
 
 image = Image.open(image_path).convert("RGB")
