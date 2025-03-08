@@ -42,9 +42,11 @@ def predict_radiology_description(image, instruction):
 
 # Example of usage!
 images = os.listdir('/images')
-input_image = input(f'enter image name available options are: \n {[f"image\n" for image in images]}')
+# Fix the f-string syntax error by removing the nested f-string with escape character
+image_options = '\n'.join(images)
+input_image = input(f'Enter image name. Available options are:\n{image_options}\n> ')
 
-image_path = f'images/{input_image}'
+image_path = f'/images/{input_image}'
 instruction = 'You are an expert radiographer. Describe accurately what you see in this image.'
 
 image = Image.open(image_path).convert("RGB")
