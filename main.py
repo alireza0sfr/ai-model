@@ -13,8 +13,6 @@ model, tokenizer = FastVisionModel.from_pretrained(
 )
 FastVisionModel.for_inference(model)
 
-model.to(device)
-
 def predict_radiology_description(image, instruction):
     try:
         messages = [{"role": "user", "content": [
@@ -28,7 +26,7 @@ def predict_radiology_description(image, instruction):
             input_text,
             add_special_tokens=False,
             return_tensors="pt",
-        ).to(device)
+        )
 
         output_ids = model.generate(
             **inputs,
