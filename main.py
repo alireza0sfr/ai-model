@@ -26,7 +26,7 @@ def predict_radiology_description(image, instruction):
             input_text,
             add_special_tokens=False,
             return_tensors="pt",
-        )
+        ).to(device)
 
         output_ids = model.generate(
             **inputs,
@@ -41,7 +41,7 @@ def predict_radiology_description(image, instruction):
         return f"Error: {str(e)}"
 
 # Example of usage!
-image_path = 'example_image.jpg'
+image_path = 'example_image.jpeg'
 instruction = 'You are an expert radiographer. Describe accurately what you see in this image.'
 
 image = Image.open(image_path).convert("RGB")
