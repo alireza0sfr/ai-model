@@ -41,7 +41,7 @@ def predict_radiology_description(image, instruction):
         return f"Error: {str(e)}"
 
 # Example of usage!
-images = os.listdir('/images')
+images = os.listdir('images')
 # Fix the f-string syntax error by removing the nested f-string with escape character
 image_options = '\n'.join(images)
 input_image = input(f'Enter image name. Available options are:\n{image_options}\n> ')
