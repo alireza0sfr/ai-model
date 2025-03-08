@@ -2,7 +2,7 @@ from unsloth import FastVisionModel
 from PIL import Image
 import numpy as np
 import torch
-
+import os
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Load model and tokenizer
@@ -41,7 +41,10 @@ def predict_radiology_description(image, instruction):
         return f"Error: {str(e)}"
 
 # Example of usage!
-image_path = 'example_image.jpg'
+images = os.listdir('/images')
+input_image = input(f'enter image name available options are: \n {[f"image\n" for image in images]}')
+
+image_path = f'images/{input_image}'
 instruction = 'You are an expert radiographer. Describe accurately what you see in this image.'
 
 image = Image.open(image_path).convert("RGB")
