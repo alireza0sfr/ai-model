@@ -1,3 +1,7 @@
+# Use bash and make each target run in a single shell
+.ONESHELL:
+SHELL := /bin/bash
+
 init:
 	echo "initializing..."
 	python -m pip install --upgrade pip
