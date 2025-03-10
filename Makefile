@@ -12,4 +12,5 @@ init:
 
 demo:
 	echo "running demo..."
+	source venv/bin/activate
 	python src/demo/main.py
