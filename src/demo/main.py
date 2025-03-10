@@ -1,16 +1,12 @@
 from unsloth import FastVisionModel
 from PIL import Image
-import numpy as np
 import torch
 import os
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-# Load model and tokenizer
-model, tokenizer = FastVisionModel.from_pretrained(
-    "0llheaven/Llama-3.2-11B-Vision-Radiology-mini",
-    load_in_4bit=True,
-    use_gradient_checkpointing="unsloth",
-)
+from radigenius.model_utils import initialize_model
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+model, tokenizer = initialize_model("inference")
 FastVisionModel.for_inference(model)
 
 def predict_radiology_description(image, instruction):
