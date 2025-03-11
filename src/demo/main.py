@@ -3,7 +3,7 @@ from PIL import Image
 import torch
 import os
 
-from ..radigenius.model_utils import initialize_model
+from radigenius.model_utils import initialize_model
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model, tokenizer = initialize_model("inference")
