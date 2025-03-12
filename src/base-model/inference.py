@@ -40,7 +40,7 @@ def predict_radiology_description(image, instruction):
 
 
 def main():
-    images = os.listdir('images')
+    images = os.listdir('./images')
     image_options = '\n'.join([f'{image.split(".")[0]}' for image in images])
 
     while True:
@@ -50,7 +50,7 @@ def main():
       user_prompt = input(f'Enter your prompt or press enter to use default prompt: (default: {default_prompt})')
       instruction = user_prompt if user_prompt else default_prompt
 
-      image_path = f'images/{input_image}.jpg'
+      image_path = f'./images/{input_image}.jpg'
 
       image = Image.open(image_path).convert("RGB")
 
