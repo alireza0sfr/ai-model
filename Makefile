@@ -2,10 +2,8 @@
 .ONESHELL:
 SHELL := /bin/bash
 
-# Define PYTHONPATH for the project
+# Define project root and PYTHONPATH
 PYTHONPATH := $(shell pwd)/src
-# Export all variables to subshells (including PYTHONPATH)
-.EXPORT_ALL_VARIABLES:
 
 init:
 	echo "initializing..."
@@ -18,4 +16,4 @@ init:
 base-model-inference:
 	echo "running base model inference..."
 	source venv/bin/activate
-	python src/base-model/inference.py
+	PYTHONPATH=$(PYTHONPATH) python src/base-model/inference.py

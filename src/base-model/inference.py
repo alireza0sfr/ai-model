@@ -3,7 +3,7 @@ from PIL import Image
 import torch
 import os
 
-from .model_utils import initialize_model
+from model_utils import initialize_model
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
