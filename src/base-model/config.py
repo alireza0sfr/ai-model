@@ -24,7 +24,7 @@ INFERENCE_CONFIG = {
     "max_seq_length": 4096,
     
     # Same cache directory
-    "cache_dir": "/base-model",
+    "cache_dir": "./model_cache",
 }
 
 # ======================================================================
@@ -54,7 +54,7 @@ FINETUNING_CONFIG = {
     "max_seq_length": 2048,
     
     # Same cache directory
-    "cache_dir": "/base-model",
+    "cache_dir": "./model_cache",
 }
 
 # ======================================================================
@@ -97,3 +97,23 @@ DTYPE RECOMMENDATIONS:
 | Other RTX 3000/4000 series      | torch.float16       | Good balance             |
 | Older GPUs                      | torch.float16       | May need 4-bit always    |
 """
+
+# ======================================================================
+# PEFT CONFIGURATION
+# ======================================================================
+PEFT_CONFIG = {
+    "r": 32,
+    "lora_alpha": 64,
+    "lora_dropout": 0,
+    "target_modules": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "up_proj",
+        "down_proj",
+        "o_proj",
+        "gate_proj",
+    ],
+    "use_rslora": True,
+    "use_gradient_checkpointing": "unsloth",
+}

@@ -315,6 +315,10 @@ pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,python,visualstudiocode,pycharm+all
 
-### Lambda ###
-src/lambda/ssh-key/*.pem
-ollama_files/*.gguf
+# Ignore all model caches
+**/model_cache
+**/model_cache/**
+
+# Ignore all unsloth compiled cache
+unsloth_compiled_cache/
+unsloth_compiled_cache/**

@@ -2,6 +2,11 @@
 .ONESHELL:
 SHELL := /bin/bash
 
+# Define PYTHONPATH for the project
+PYTHONPATH := $(shell pwd)/src
+# Export all variables to subshells (including PYTHONPATH)
+.EXPORT_ALL_VARIABLES:
+
 init:
 	echo "initializing..."
 	python -m pip install --upgrade pip
@@ -10,7 +15,7 @@ init:
 	source venv/bin/activate
 	pip install -r requirements.txt
 
-demo:
-	echo "running demo..."
+base-model-inference:
+	echo "running base model inference..."
 	source venv/bin/activate
-	python src/demo/main.py
+	python src/base-model/inference.py

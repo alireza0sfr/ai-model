@@ -3,9 +3,11 @@ from PIL import Image
 import torch
 import os
 
-from radigenius.model_utils import initialize_model
+from .model_utils import initialize_model
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+# Load model and tokenizer
 model, tokenizer = initialize_model("inference")
 FastVisionModel.for_inference(model)
 
