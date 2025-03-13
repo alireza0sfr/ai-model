@@ -5,6 +5,11 @@ import os
 
 from model_utils import initialize_model
 
+# Get the directory where this script is located
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+# Path to the images directory relative to the script
+IMAGES_DIR = os.path.join(SCRIPT_DIR, 'images')
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Load model and tokenizer
@@ -40,7 +45,8 @@ def predict_radiology_description(image, instruction):
 
 
 def main():
-    images = os.listdir('./images')
+    # Use absolute path for images directory
+    images = os.listdir(IMAGES_DIR)
     image_options = '\n'.join([f'{image.split(".")[0]}' for image in images])
 
     while True:
@@ -50,7 +56,8 @@ def main():
       user_prompt = input(f'Enter your prompt or press enter to use default prompt: (default: {default_prompt})')
       instruction = user_prompt if user_prompt else default_prompt
 
-      image_path = f'./images/{input_image}.jpg'
+      # Use absolute path for image file
+      image_path = os.path.join(IMAGES_DIR, f'{input_image}.jpg')
 
       image = Image.open(image_path).convert("RGB")
 
